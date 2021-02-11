@@ -19,11 +19,12 @@ loop do
   【#{monster.name}】HP: #{monster.hp}
   *=*=*=*=*=*=*=*=*=*=*
   EOS
-  break if monster.hp <= 0 || break if brave.hp <= 0
+  break if monster.hp <= 0
+  break if brave.hp <= 0
 end
 
 if brave.hp == 0
   puts "#{brave.name}はしんでしまった！"
-elsif monster.hp == 0
+else
   puts "#{monster.name}をやっつけた！"
 end
