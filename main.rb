@@ -10,21 +10,20 @@ puts "#{monster.name}があらわれた！"
 
 
 loop do
-  brave.attack(monster)
-  #break if monster.hp <= 0
-  monster.attack(brave)
-  #break if brave.hp <= 0
+  brave.attack(monster) if monster.hp > 0
+  monster.attack(brave) if brave.hp > 0
+  
   puts <<~EOS
   *=*=*=*=*=*=*=*=*=*=*
   【#{brave.name}】HP: #{brave.hp}
   【#{monster.name}】HP: #{monster.hp}
   *=*=*=*=*=*=*=*=*=*=*
   EOS
-  if brave.hp <= 0
-    puts "#{brave.name}はしんでしまった！"
-    break
-  elsif monster.hp <= 0
-    puts "#{monster.name}をやっつけた！"
-    break
-  end
+  break if monster.hp <= 0 || break if brave.hp <= 0
+end
+
+if brave.hp == 0
+  puts "#{brave.name}はしんでしまった！"
+elsif monster.hp == 0
+  puts "#{monster.name}をやっつけた！"
 end
